@@ -2,8 +2,7 @@ import datetime
 
 from flask import Flask
 
-from reactions_service.auth import login_manager
-from reactions_service.database import db, User, Story
+from reactions_service.database import db
 from reactions_service.views import blueprints
 
 
@@ -19,13 +18,11 @@ def create_app(debug=False):
     app.config['LOGIN_DISABLED'] = True
     app.config['WTF_CSRF_ENABLED'] = False
 
-
     for bp in blueprints:
         app.register_blueprint(bp)
         bp.app = app
 
     db.init_app(app)
-    login_manager.init_app(app)
     db.create_all(app=app)
     return app
 

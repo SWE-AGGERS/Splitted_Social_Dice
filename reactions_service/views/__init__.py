@@ -1,9 +1,3 @@
-from .auth import auth
-from .follow import follow
-from .home import home
-from .stories import stories
-from .users import users
-from .wall import wall
-from .search import search
+from .reactions import reacts
 
-blueprints = [home, auth, users, stories, wall, follow, search]
+blueprints = [reacts]
